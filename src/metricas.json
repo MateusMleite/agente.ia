@@ -1,0 +1,27 @@
+{
+  "totalAcessos": 12,
+  "avaliacoes": {
+    "1_estrela": 1,
+    "2_estrelas": 0,
+    "3_estrelas": 4,
+    "4_estrelas": 0,
+    "5_estrelas": 2
+  },
+  "comentarios": [
+    {
+      "nota": 5,
+      "comentario": "Otimo",
+      "data": "2026-08-31T16:02:08.052Z"
+    },
+    {
+      "nota": 3,
+      "comentario": "Melhore",
+      "data": "2026-08-31T16:02:38.034Z"
+    },
+    {
+      "nota": 3,
+      "comentario": "teste",
+      "data": "2026-08-31T18:41:43.458Z"
+    }
+  ]
+}

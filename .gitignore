@@ -1,0 +1,24 @@
+# Dependências
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Variáveis de ambiente (credenciais e senhas)
+.env
+.env.local
+.env.*.local
+
+# Autenticação e cache do WhatsApp Web JS
+.wwebjs_auth/
+.wwebjs_cache/
+
+# Logs
+logs
+*.log
+
+# Sistema Operacional e Editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

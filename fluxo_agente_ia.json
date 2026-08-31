@@ -1,0 +1,52 @@
+{
+  "name": "Fluxo Agente IA SAC Hospital",
+  "description": "Fluxo de atendimento integrado ao Agente de IA para tirar dúvidas e encaminhar setores do hospital",
+  "version": "1.0",
+  "channel_type": "whatsapp",
+  "nodes": [
+    {
+      "id": "node_inicio",
+      "type": "start",
+      "name": "Início do Atendimento",
+      "position": { "x": 100, "y": 100 },
+      "next": "node_integracao_ia"
+    },
+    {
+      "id": "node_integracao_ia",
+      "type": "integration",
+      "name": "Consultar Agente IA",
+      "integration_name": "Agente Duvidas",
+      "method": "POST",
+      "url": "https://said-shoulder-americans-ons.trycloudflare.com/fortics-webhook",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "message": "{{mensagem}}",
+        "phone": "{{telefone}}",
+        "name": "{{nome}}"
+      },
+      "output_variables": [
+        "resposta_agente",
+        "message",
+        "response"
+      ],
+      "position": { "x": 100, "y": 250 },
+      "next": "node_enviar_resposta"
+    },
+    {
+      "id": "node_enviar_resposta",
+      "type": "message",
+      "name": "Enviar Resposta ao Paciente",
+      "message_text": "{{resposta_agente}}",
+      "position": { "x": 100, "y": 400 },
+      "next": "node_fim"
+    },
+    {
+      "id": "node_fim",
+      "type": "end",
+      "name": "Aguardar Nova Mensagem",
+      "position": { "x": 100, "y": 550 }
+    }
+  ]
+}

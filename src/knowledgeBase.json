@@ -1,0 +1,210 @@
+{
+    "setores": [
+        {
+            "id": "psicologia",
+            "nome": "Psicologia",
+            "envVarTelefone": "NUMERO_PSICOLOGIA",
+            "perguntas": [
+                {
+                    "pergunta": "Como posso agendar atendimento com o Serviço de Psicologia?",
+                    "resposta": "Para agendar atendimento psicológico ambulatorial, procure a Unidade Básica de Saúde (UBS) mais próxima da sua residência. Após avaliação pelo médico da unidade, caso haja indicação, será realizado o encaminhamento e a solicitação será inserida no Sistema de Regulação (SISREG) pela própria UBS. A solicitação será regulada de acordo com os critérios da Central de Regulação e com a disponibilidade de vagas na rede pública de saúde, podendo ser agendada em qualquer unidade habilitada, não necessariamente neste hospital."
+                },
+                {
+                    "pergunta": "Durante a internação, a Psicologia pode encaminhar para Psiquiatria ou emitir atestados e outros documentos psicológicos?",
+                    "resposta": "Durante a internação, o Serviço de Psicologia realiza acolhimento e acompanhamento psicológico relacionados às demandas da hospitalização. Encaminhamentos para outras especialidades, como Psiquiatria, devem ser solicitados ao médico responsável pelo paciente. O Serviço de Psicologia não realiza avaliação psicológica para fins periciais nem emite atestados, laudos, pareceres ou outros documentos dessa natureza durante a internação."
+                },
+                {
+                    "pergunta": "Como solicitar a visita de uma criança a um familiar internado?",
+                    "resposta": "A solicitação deve ser feita à equipe assistencial da unidade de internação. O psicólogo solicitará parecer ao médico responsável e, havendo autorização médica, a visita será agendada. No dia, a criança será acolhida pelo psicólogo, que avaliará as condições emocionais e dará as orientações necessárias. É indispensável que a criança esteja com a caderneta de vacinação atualizada. Adolescentes com 16 anos ou mais seguem o fluxo regular de visitas."
+                }
+            ]
+        },
+        {
+            "id": "nutricao",
+            "nome": "Nutrição",
+            "envVarTelefone": "NUMERO_NUTRICAO",
+            "perguntas": [
+                {
+                    "pergunta": "Quem define a alimentação do paciente internado?",
+                    "resposta": "A dieta é prescrita pelo médico e planejada pelo nutricionista, considerando o estado clínico, as necessidades nutricionais e as restrições alimentares de cada paciente."
+                },
+                {
+                    "pergunta": "Posso escolher o que desejo comer durante a internação?",
+                    "resposta": "Sempre que a dieta permitir, o Serviço de Nutrição busca respeitar as preferências alimentares do paciente. Porém, o cardápio pode sofrer restrições conforme a condição clínica e a prescrição médica."
+                },
+                {
+                    "pergunta": "Posso receber alimentos trazidos por familiares?",
+                    "resposta": "Não é recomendado. Qualquer alimento externo deve ser previamente autorizado pela equipe assistencial e pelo nutricionista, pois alguns produtos podem comprometer o tratamento ou representar risco à segurança alimentar."
+                },
+                {
+                    "pergunta": "Como comunicar alergias ou intolerâncias alimentares?",
+                    "resposta": "Essas informações devem ser comunicadas no momento da admissão e sempre reforçadas à equipe assistencial e ao nutricionista, para garantir uma alimentação segura."
+                },
+                {
+                    "pergunta": "O acompanhante que possui alguma comorbidade recebe alimentação conforme necessidade?",
+                    "resposta": "Sim. Ao fazer o cadastro na recepção, o acompanhante pode informar se possui alguma comorbidade (ex: diabetes, hipertensão) ou particularidade alimentar (ex: vegetariano, adventista)."
+                },
+                {
+                    "pergunta": "O acompanhante recebe alimentação?",
+                    "resposta": "Sim. A disponibilidade de refeições para acompanhantes não segue critério de idade — todos podem receber as refeições em todos os horários."
+                },
+                {
+                    "pergunta": "O paciente pode solicitar visita do nutricionista no leito?",
+                    "resposta": "Sim. O paciente ou familiar pode solicitar avaliação nutricional por meio da equipe de enfermagem, que fará o encaminhamento ao Serviço de Nutrição."
+                },
+                {
+                    "pergunta": "Como faço uma sugestão, elogio ou reclamação sobre a alimentação hospitalar?",
+                    "resposta": "As manifestações podem ser feitas pelo Serviço de Ouvidoria do hospital. Todas são registradas, analisadas e respondidas pelos setores responsáveis."
+                },
+                {
+                    "pergunta": "Por que alguns pacientes ficam em jejum?",
+                    "resposta": "O jejum é indicado pelo médico para realização de exames, procedimentos ou cirurgias. O tempo de jejum é acompanhado pela equipe multiprofissional para garantir a segurança do paciente."
+                },
+                {
+                    "pergunta": "O que fazer se a refeição chegar fria, incompleta ou diferente da dieta prescrita?",
+                    "resposta": "Informe imediatamente a equipe de enfermagem para solicitar a troca da refeição junto à equipe de Nutrição."
+                }
+            ]
+        },
+        {
+            "id": "hospital_dia",
+            "nome": "Hospital Dia",
+            "envVarTelefone": "NUMERO_HOSPITAL_DIA",
+            "avisos": [
+                "Leia atentamente todas as informações contidas na sua guia de encaminhamento.",
+                "A data da autorização NÃO é a data do procedimento.",
+                "O agendamento será realizado após a análise da documentação e conforme disponibilidade de vagas.",
+                "Aguarde o contato da equipe do Hospital Dia para confirmação da data e do horário."
+            ],
+            "perguntas": [
+                {
+                    "pergunta": "A data da autorização da minha guia é a data do meu procedimento?",
+                    "resposta": "Não. A data da autorização confirma apenas que o procedimento foi autorizado. Após a análise da documentação e disponibilidade de vagas, a equipe entrará em contato para informar a data e o horário do agendamento."
+                },
+                {
+                    "pergunta": "Quanto tempo demora para marcar meu procedimento?",
+                    "resposta": "O prazo varia conforme a especialidade, disponibilidade de vagas e análise da documentação. Assim que houver disponibilidade, a equipe entrará em contato."
+                },
+                {
+                    "pergunta": "Preciso enviar algum documento para agendar?",
+                    "resposta": "Sim. Envie pelo WhatsApp a guia do procedimento autorizada, o Cartão Nacional de Saúde (Cartão SUS) e os demais documentos solicitados."
+                },
+                {
+                    "pergunta": "Posso escolher a data da minha cirurgia ou exame?",
+                    "resposta": "O agendamento é feito conforme a disponibilidade do serviço e os critérios da fila de atendimento. A equipe orienta sobre as datas disponíveis sempre que possível."
+                },
+                {
+                    "pergunta": "Posso ir ao Hospital Dia sem agendamento?",
+                    "resposta": "Não. Os atendimentos e procedimentos são realizados somente mediante agendamento."
+                },
+                {
+                    "pergunta": "Como sei que meu agendamento foi confirmado?",
+                    "resposta": "A equipe entrará em contato pelo WhatsApp ou telefone informado para confirmar data, horário e orientações do procedimento."
+                },
+                {
+                    "pergunta": "O que acontece se eu faltar ao procedimento?",
+                    "resposta": "Avise a equipe com antecedência caso não possa comparecer, para que seja possível remarcar e disponibilizar a vaga para outro paciente."
+                },
+                {
+                    "pergunta": "Como faço para agendar meu exame de urodinâmica/urofluxometria, cirurgia do olho, cirurgia de Dermatologia, ou punção de mama e tireoide?",
+                    "resposta": "O agendamento é realizado de forma on-line, pelo WhatsApp: envie a guia autorizada do procedimento e o Cartão Nacional de Saúde (Cartão SUS). Para cirurgias de catarata e pterígio, envie também a foto do Cartão SUS junto com a guia. Lembre-se: a data da autorização não é a data do procedimento — após a análise da documentação, a equipe entrará em contato com a data, horário e orientações."
+                }
+            ]
+        },
+        {
+            "id": "centro_cirurgico",
+            "nome": "Centro Cirúrgico",
+            "envVarTelefone": "NUMERO_CENTRO_CIRURGICO",
+            "perguntas": [
+                {
+                    "pergunta": "Como meus familiares serão informados sobre o andamento da cirurgia?",
+                    "resposta": "Durante o procedimento, a equipe segue o fluxo de comunicação definido pela instituição. O acompanhante receberá as informações conforme o protocolo do hospital e será avisado quando a cirurgia for finalizada e sobre a previsão de transferência para a recuperação anestésica."
+                },
+                {
+                    "pergunta": "Posso usar maquiagem, esmalte, joias ou acessórios no dia da cirurgia?",
+                    "resposta": "Não. Para sua segurança, o paciente deve comparecer sem maquiagem, esmalte, joias, piercings, relógio, lentes de contato e outros acessórios."
+                },
+                {
+                    "pergunta": "O que acontece se eu estiver com gripe, febre ou outro problema de saúde no dia da cirurgia?",
+                    "resposta": "É importante informar imediatamente a equipe médica para que o Centro Cirúrgico seja avisado. Dependendo da avaliação do médico e do anestesiologista, a cirurgia poderá ser mantida ou remarcada para garantir a segurança do paciente."
+                }
+            ]
+        },
+        {
+            "id": "pre_agendamento",
+            "nome": "Pré-Agendamento",
+            "envVarTelefone": "NUMERO_PRE_AGENDAMENTO",
+            "avisos": [],
+            "perguntas": [
+                {
+                    "pergunta": "O que é o Pré-Agendamento?",
+                    "resposta": "O Pré-Agendamento é um serviço que auxilia no agendamento de exames, consultas e procedimentos. Ao enviar a guia autorizada, a equipe verifica a disponibilidade e entra em contato para confirmar a data e o horário."
+                },
+                {
+                    "pergunta": "Quais documentos preciso enviar para agendar?",
+                    "resposta": "Você deve enviar a guia autorizada, o Cartão Nacional de Saúde (Cartão SUS) e, se necessário, outros documentos solicitados."
+                },
+                {
+                    "pergunta": "A data da autorização é a data do procedimento?",
+                    "resposta": "Não. A data da autorização confirma que o procedimento foi autorizado. O agendamento é realizado posteriormente, conforme disponibilidade de vagas."
+                },
+                {
+                    "pergunta": "Posso escolher a data do meu agendamento?",
+                    "resposta": "O agendamento é realizado conforme a disponibilidade do serviço. A equipe entrará em contato para informar as datas disponíveis."
+                }
+            ]
+        },
+        {
+            "id": "servico_social",
+            "nome": "Serviço Social",
+            "envVarTelefone": "NUMERO_SERVICO_SOCIAL",
+            "avisos": [],
+            "perguntas": [
+                {
+                    "pergunta": "Qual o horário do boletim das UTIs?",
+                    "resposta": "O Boletim é realizado diariamente nos horários:\n- UTI 20 LEITOS: 14H\n- UTI 30 LEITOS: 15H\n- UTI'S TÉRREO (C e D): 15H\n- UTI'S TÉRREO (A, B e H): 16H"
+                },
+                {
+                    "pergunta": "Qual o horário do Boletim da Sala Vermelha?",
+                    "resposta": "Boletim é realizado diariamente às 15h30, de forma presencial, à beira leito. É permitida a presença de um familiar por dia"
+                },
+                {
+                    "pergunta": "Qual o horário de visita das Enfermarias?",
+                    "resposta": "Visita realizada diariamente às 16h30. \n- Permitido 2 visitantes por dia, duração da visita é de 30 minutos para cada."
+                },
+                {
+                    "pergunta": "Qual o horário para troca de Acompanhante?",
+                    "resposta": "Horário para fazer as trocas é das 7hrs às 9hrs - 19hrs às 21hrs."
+                },
+                {
+                    "pergunta": "O que devo fazer se chegar atrasado para a troca de acompanhante?",
+                    "resposta": "Deve comparecer ao Serviço Social para solicitar troca fora do horário, munido de documentação oficial com foto."
+                }
+            ]
+        },
+        {
+            "id": "sau",
+            "nome": "SAU",
+            "envVarTelefone": "NUMERO_SAU",
+            "avisos": [],
+            "perguntas": [
+                {
+                    "pergunta": "O que é o SAU?",
+                    "resposta": "O Serviço de Atendimento ao Usuário (SAU) é o canal de comunicação entre os usuários e o Complexo Hospitalar Zona Norte. Recebemos manifestações, prestamos orientações, realizamos pesquisas de satisfação e buscamos contribuir para a melhoria contínua dos serviços prestados"
+                },
+                {
+                    "pergunta": "Como posso registrar uma reclamação?",
+                    "resposta": "Você pode registrar sua reclamação pelos canais oficiais do Serviço de Atendimento ao Usuário (SAU). Para isso, entre em contato pelo WhatsApp (92) 98554-9282, pelo e-mail assistentesau.chzn@indsh.org.br ou acesse o site do Complexo Hospitalar Zona Norte (https://chzn.org.br/) e selecione a aba \"Ouvidoria\" para registrar sua manifestação. Caso prefira, o atendimento também pode ser realizado presencialmente no SAU. \n- Para que sua manifestação seja analisada de forma adequada, informe o máximo de detalhes possível, como data, horário, local, descrição do ocorrido e, se souber, o nome do setor envolvido. Essas informações auxiliam na apuração e contribuem para uma resposta mais precisa."
+                },
+                {
+                    "pergunta": "Meus dados ficam protegidos?",
+                    "resposta": "Sim. Seus dados são protegidos e tratados de forma confidencial. Eles são utilizados apenas para registrar, analisar e responder à sua manifestação, conforme a Lei Geral de Proteção de Dados (LGPD) e as normas de segurança da instituição. Apenas os profissionais autorizados têm acesso às informações necessárias para o atendimento da sua solicitação."
+                },
+                {
+                    "pergunta": "O SAU resolve meu problema imediatamente?",
+                    "resposta": "O SAU atua como canal de comunicação entre o usuário e a instituição. As manifestações são analisadas e encaminhadas às áreas responsáveis para apuração e resposta."
+                }
+            ]
+        }
+    ]
+}
