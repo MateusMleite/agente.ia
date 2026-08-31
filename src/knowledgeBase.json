@@ -102,6 +102,10 @@
                     "resposta": "A equipe entrará em contato pelo WhatsApp ou telefone informado para confirmar data, horário e orientações do procedimento."
                 },
                 {
+                    "pergunta": "Como cancelar ou remarcar meu procedimento/cirurgia?",
+                    "resposta": "Caso precise desmarcar ou remarcar sua cirurgia ou exame, avise a equipe do Hospital Dia com antecedência pelo WhatsApp ou entre em contato com o SAU no WhatsApp (92) 98554-9282, para que sua vaga possa ser remanejada e um novo agendamento seja programado."
+                },
+                {
                     "pergunta": "O que acontece se eu faltar ao procedimento?",
                     "resposta": "Avise a equipe com antecedência caso não possa comparecer, para que seja possível remarcar e disponibilizar a vaga para outro paciente."
                 },
@@ -161,24 +165,28 @@
             "avisos": [],
             "perguntas": [
                 {
+                    "pergunta": "Como funcionam as visitas na UTI e qual o horário do boletim médico?",
+                    "resposta": "As visitas e o repasse de informações aos familiares nas UTIs ocorrem presencialmente durante o horário do Boletim Médico diário:\n- UTI 20 LEITOS: 14h\n- UTI 30 LEITOS: 15h\n- UTIs TÉRREO (C e D): 15h\n- UTIs TÉRREO (A, B e H): 16h\nÉ permitida a presença de familiar responsável conforme as orientações da equipe da unidade."
+                },
+                {
                     "pergunta": "Qual o horário do boletim das UTIs?",
-                    "resposta": "O Boletim é realizado diariamente nos horários:\n- UTI 20 LEITOS: 14H\n- UTI 30 LEITOS: 15H\n- UTI'S TÉRREO (C e D): 15H\n- UTI'S TÉRREO (A, B e H): 16H"
+                    "resposta": "O Boletim Médico e visita das UTIs é realizado diariamente nos horários:\n- UTI 20 LEITOS: 14h\n- UTI 30 LEITOS: 15h\n- UTIs TÉRREO (C e D): 15h\n- UTIs TÉRREO (A, B e H): 16h"
                 },
                 {
                     "pergunta": "Qual o horário do Boletim da Sala Vermelha?",
-                    "resposta": "Boletim é realizado diariamente às 15h30, de forma presencial, à beira leito. É permitida a presença de um familiar por dia"
+                    "resposta": "O Boletim da Sala Vermelha é realizado diariamente às 15h30, de forma presencial, à beira do leito. É permitida a presença de um familiar por dia."
                 },
                 {
                     "pergunta": "Qual o horário de visita das Enfermarias?",
-                    "resposta": "Visita realizada diariamente às 16h30. \n- Permitido 2 visitantes por dia, duração da visita é de 30 minutos para cada."
+                    "resposta": "A visita nas enfermarias é realizada diariamente às 16h30. São permitidos até 2 visitantes por dia, com duração de 30 minutos para cada um."
                 },
                 {
                     "pergunta": "Qual o horário para troca de Acompanhante?",
-                    "resposta": "Horário para fazer as trocas é das 7hrs às 9hrs - 19hrs às 21hrs."
+                    "resposta": "O horário para fazer as trocas de acompanhante é das 07h às 09h e das 19h às 21h."
                 },
                 {
                     "pergunta": "O que devo fazer se chegar atrasado para a troca de acompanhante?",
-                    "resposta": "Deve comparecer ao Serviço Social para solicitar troca fora do horário, munido de documentação oficial com foto."
+                    "resposta": "Deve comparecer ao Serviço Social para solicitar a troca fora do horário, munido de documentação oficial com foto."
                 }
             ]
         },
