@@ -29,13 +29,35 @@ export const toolDefinitions = [
 export const toolImplementations = {
     buscar_conhecimento: async ({ setor_id }) => {
         const setor = getSetorPorId(setor_id);
-        if (!setor) {
-            return { erro: `Setor '${setor_id}' não encontrado.` };
+        if (setor) {
+            return {
+                setor: setor.nome,
+                avisos: setor.avisos ?? [],
+                perguntas: setor.perguntas,
+            };
         }
+
+        // Fallback: busca em todos os setores
+        const termo = (setor_id || "").toLowerCase();
+        const encontrados = [];
+        for (const s of (await import("./knowledgeBase.js")).default.setores) {
+            const matches = s.perguntas.filter(
+                (p) =>
+                    p.pergunta.toLowerCase().includes(termo) ||
+                    p.resposta.toLowerCase().includes(termo)
+            );
+            if (matches.length > 0) {
+                encontrados.push({ setor: s.nome, perguntas: matches });
+            }
+        }
+
+        if (encontrados.length > 0) {
+            return { resultados: encontrados };
+        }
+
         return {
-            setor: setor.nome,
-            avisos: setor.avisos ?? [],
-            perguntas: setor.perguntas,
+            mensagem: "Consulte as informações oficiais dos setores abaixo:",
+            setores: listarSetores(),
         };
     },
 };

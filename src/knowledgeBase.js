@@ -37,7 +37,41 @@ export function baseDeConhecimentoCompleta() {
 }
 
 export function getSetorPorId(id) {
-    return KB.setores.find((s) => s.id === id);
+    if (!id || typeof id !== "string") return null;
+    const cleanId = id.toLowerCase().trim().replace(/[-\s]/g, "_");
+
+    const aliasMap = {
+        uti: "servico_social",
+        utis: "servico_social",
+        visita: "servico_social",
+        visitas: "servico_social",
+        enfermaria: "servico_social",
+        enfermarias: "servico_social",
+        boletim: "servico_social",
+        acompanhante: "servico_social",
+        cirurgia: "centro_cirurgico",
+        cirurgias: "centro_cirurgico",
+        dieta: "nutricao",
+        comida: "nutricao",
+        alimentacao: "nutricao",
+        ouvidoria: "sau",
+        reclamacao: "sau",
+        elogio: "sau",
+        exame: "hospital_dia",
+        exames: "hospital_dia",
+        agendamento: "pre_agendamento",
+    };
+
+    const targetId = aliasMap[cleanId] || cleanId;
+    return (
+        KB.setores.find(
+            (s) =>
+                s.id === targetId ||
+                s.id === cleanId ||
+                s.nome.toLowerCase() === cleanId ||
+                s.nome.toLowerCase().replace(/[-\s]/g, "_") === cleanId
+        ) || null
+    );
 }
 
 export default KB;
