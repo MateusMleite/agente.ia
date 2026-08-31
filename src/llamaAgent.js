@@ -71,9 +71,11 @@ export async function responderPaciente(telefone, textoMensagem) {
 
         const toolCalls = mensagemAssistente.tool_calls;
         if (!toolCalls || toolCalls.length === 0) {
-            respostaFinal = (mensagemAssistente.content || "").trim();
-            if (respostaFinal === "") {
+            const conteudo = typeof mensagemAssistente.content === "string" ? mensagemAssistente.content.trim() : "";
+            if (conteudo === "") {
                 respostaFinal = "Não tenho informações sobre esse assunto. Para esse tipo de demanda, você pode entrar em contato diretamente com o SAU — Serviço de Atendimento ao Usuário do CHZN:\n\n📱 WhatsApp: (92) 98554-9282\n📧 E-mail: assistentesau.chzn@indsh.org.br\n🌐 Site: https://chzn.org.br/ (aba Ouvidoria)\n\nPosso ajudar com mais alguma coisa?";
+            } else {
+                respostaFinal = conteudo;
             }
             break;
         }
@@ -102,6 +104,10 @@ export async function responderPaciente(telefone, textoMensagem) {
                 content: JSON.stringify(resultado),
             });
         }
+    }
+
+    if (!respostaFinal) {
+        respostaFinal = "Desculpe, não consegui processar a resposta no momento. Por favor, tente novamente.";
     }
 
     adicionarMensagem(telefone, { role: "assistant", content: respostaFinal });
