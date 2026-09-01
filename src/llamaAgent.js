@@ -7,9 +7,16 @@ const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 // Modelo Llama com suporte a tool calling na Groq. Confira em
 // console.groq.com/docs/models se este nome ainda estiver disponível —
 // a Groq costuma atualizar a lista de modelos com frequência.
-const MODELO = process.env.GROQ_MODEL || "openai/gpt-oss-120b";
+const MODELOS = [
+    process.env.GROQ_MODEL || "openai/gpt-oss-120b",
+    "openai/gpt-oss-20b",
+    "qwen/qwen3.8-27b",
+    "groq/compound-mini",
+];
 
-async function chamarGroq(mensagens, tentativa = 1) {
+async function chamarGroq(mensagens, modeloIndex = 0) {
+    const modeloAtual = MODELOS[modeloIndex] || MODELOS[0];
+
     const resposta = await fetch(GROQ_URL, {
         method: "POST",
         headers: {
@@ -17,28 +24,16 @@ async function chamarGroq(mensagens, tentativa = 1) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            model: MODELO,
+            model: modeloAtual,
             messages: mensagens,
-            tools: openAiTools,
-            tool_choice: "auto",
-            max_tokens: 1024,
+            max_tokens: 600,
         }),
     });
 
-    // Rate limit (429): aguarda e tenta de novo automaticamente
-    if (resposta.status === 429 && tentativa <= 4) {
-        const erroText = await resposta.text();
-        // Extrai o tempo de espera sugerido pela Groq, se disponível
-        const match = erroText.match(/try again in ([\d.]+)(m?s)/);
-        let espera = tentativa * 2000; // padrão: 2s, 4s, 6s, 8s
-        if (match) {
-            const valor = parseFloat(match[1]);
-            espera = match[2] === "ms" ? Math.ceil(valor) + 500 : Math.ceil(valor * 1000) + 500;
-            espera = Math.min(espera, 12000); // máximo 12s
-        }
-        console.log(`⏳ Rate limit da Groq. Aguardando ${(espera / 1000).toFixed(1)}s antes da tentativa ${tentativa + 1}...`);
-        await new Promise(r => setTimeout(r, espera));
-        return chamarGroq(mensagens, tentativa + 1);
+    // Se atingir rate limit (429) no modelo atual, pula instantaneamente para o próximo modelo disponível sem travar o usuário
+    if (resposta.status === 429 && modeloIndex + 1 < MODELOS.length) {
+        console.log(`⚡ Rate limit no modelo ${modeloAtual}. Alternando instantaneamente para ${MODELOS[modeloIndex + 1]}...`);
+        return chamarGroq(mensagens, modeloIndex + 1);
     }
 
     if (!resposta.ok) {
@@ -58,7 +53,7 @@ export async function responderPaciente(telefone, textoMensagem) {
     adicionarMensagem(telefone, { role: "user", content: textoMensagem });
 
     const mensagens = [
-        { role: "system", content: montarSystemPrompt() },
+        { role: "system", content: montarSystemPrompt(textoMensagem) },
         ...getHistorico(telefone),
     ];
 
