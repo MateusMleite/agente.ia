@@ -30,10 +30,16 @@ async function chamarGroq(mensagens, modeloIndex = 0) {
         }),
     });
 
-    // Se atingir rate limit (429) no modelo atual, pula instantaneamente para o próximo modelo disponível sem travar o usuário
-    if (resposta.status === 429 && modeloIndex + 1 < MODELOS.length) {
-        console.log(`⚡ Rate limit no modelo ${modeloAtual}. Alternando instantaneamente para ${MODELOS[modeloIndex + 1]}...`);
-        return chamarGroq(mensagens, modeloIndex + 1);
+    // Se atingir rate limit (429) no modelo atual, pula para o próximo modelo ou aguarda brevemente
+    if (resposta.status === 429) {
+        if (modeloIndex + 1 < MODELOS.length) {
+            console.log(`⚡ Rate limit no modelo ${modeloAtual}. Alternando instantaneamente para ${MODELOS[modeloIndex + 1]}...`);
+            return chamarGroq(mensagens, modeloIndex + 1);
+        } else {
+            console.log(`⏳ Limite temporário da Groq atingido. Aguardando 3s antes de tentar novamente...`);
+            await new Promise((r) => setTimeout(r, 3000));
+            return chamarGroq(mensagens, 0);
+        }
     }
 
     if (!resposta.ok) {
@@ -61,6 +67,10 @@ export async function responderPaciente(telefone, textoMensagem) {
 
     while (respostaFinal === null) {
         const data = await chamarGroq(mensagens);
+        if (!data || !data.choices || !data.choices[0] || !data.choices[0].message) {
+            console.error("❌ Resposta inesperada da Groq:", JSON.stringify(data));
+            throw new Error(`Resposta inválida da Groq: ${JSON.stringify(data?.error || data)}`);
+        }
         const mensagemAssistente = data.choices[0].message;
         mensagens.push(mensagemAssistente);
 
