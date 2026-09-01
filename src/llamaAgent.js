@@ -15,6 +15,10 @@ const MODELOS = [
 ];
 
 async function chamarGroq(mensagens, modeloIndex = 0) {
+    if (!process.env.GROQ_API_KEY || process.env.GROQ_API_KEY.trim() === "") {
+        console.error("❌ ERRO: A variável de ambiente GROQ_API_KEY não está configurada no servidor!");
+        throw new Error("A chave GROQ_API_KEY não foi configurada nas variáveis de ambiente da Railway.");
+    }
     const modeloAtual = MODELOS[modeloIndex] || MODELOS[0];
 
     const resposta = await fetch(GROQ_URL, {
