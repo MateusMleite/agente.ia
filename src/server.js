@@ -148,8 +148,8 @@ app.post("/chat", async (req, res) => {
         console.log(`🤖 [Agente]: ${resposta}`);
         return res.status(200).json({ resposta });
     } catch (erro) {
-        console.error("❌ Erro no /chat:", erro.message);
-        return res.status(500).json({ erro: "Serviço temporariamente indisponível. Tente novamente em instantes." });
+        console.error("❌ Erro no /chat:", erro);
+        return res.status(500).json({ erro: "Serviço temporariamente indisponível. Tente novamente em instantes.", detalhes: erro.message });
     }
 });
 
