@@ -628,7 +628,9 @@
         // =====================================================
         // CONFIGURAÇÃO — altere apenas esta linha:
         // =====================================================
-        const CHZN_API_URL = "https://agenteia-production-26b5.up.railway.app";
+        const CHZN_API_URL = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
+            ? window.location.origin
+            : "https://agenteia-production-26b5.up.railway.app";
         // Gera ou recupera o ID de sessão único do visitante
         let chznSessionId = (() => {
             let id = localStorage.getItem("chzn_session");

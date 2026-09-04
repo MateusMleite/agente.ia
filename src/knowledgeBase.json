@@ -213,6 +213,42 @@
                     "resposta": "O SAU atua como canal de comunicação entre o usuário e a instituição. As manifestações são analisadas e encaminhadas às áreas responsáveis para apuração e resposta."
                 }
             ]
+        },
+        {
+            "id": "informacoes_gerais",
+            "nome": "Informações Gerais e Serviços",
+            "envVarTelefone": "",
+            "avisos": [],
+            "perguntas": [
+                {
+                    "pergunta": "Quais as informações gerais e endereço do Hospital Delphina Aziz?",
+                    "resposta": "O Hospital Delphina Rinaldi Abdel Aziz é uma unidade 100% SUS, administrada pelo INDSH, localizada na Avenida Torquato Tapajós, número 92580, bairro Colônia Tera Nova. Atende pacientes regulados pela central, assumindo característica de hospital de retaguarda, com atendimento de média e alta complexidade, incluindo transplantes."
+                },
+                {
+                    "pergunta": "Quais especialidades são atendidas no Ambulatório Clínico e Cirúrgico?",
+                    "resposta": "São atendidas as especialidades: Cardiologia, Endocrinologia, Reumatologia, Gastroenterologia, Nefrologia, Neurologia, Urologia, Mastologia, Proctologia, Oftalmologia, Psicologia, Pneumologia, Otorrinolaringologia, Nutrição, Fonoaudiologia, Fisioterapia, Serviço Social e Consultas de Transplante Renal e Hepático."
+                },
+                {
+                    "pergunta": "Como funciona o setor de Urgência e Emergência?",
+                    "resposta": "Oferece atendimento rápido e seguro para casos graves e imediatos, com equipe preparada para estabilização e início do tratamento."
+                },
+                {
+                    "pergunta": "Qual a estrutura de Internação do hospital?",
+                    "resposta": "O hospital conta com 372 leitos, distribuídos em: 100 leitos de UTI Adulto, 158 leitos clínicos, 66 leitos cirúrgicos, 28 leitos destinados a transplantes e 10 leitos para Hospital-Dia, com acompanhamento multiprofissional 24h."
+                },
+                {
+                    "pergunta": "Quais especialidades cirúrgicas são realizadas no Centro Cirúrgico?",
+                    "resposta": "Realizamos Transplantes (rim e fígado), Cirurgia Geral, Ginecológica, Mastologia, Urológica, Proctológica, Otorrinolaringologia (implante coclear), Vascular, Torácica, Dermatologia Cirúrgica e Oftalmológica (catarata e pterígio)."
+                },
+                {
+                    "pergunta": "O hospital realiza transplantes?",
+                    "resposta": "Sim. Somos referência em transplantes de rim (doador vivo e falecido) e fígado (doador vivo e falecido), com acompanhamento desde a avaliação até o pós-operatório."
+                },
+                {
+                    "pergunta": "Quais exames são realizados no hospital (SADT)?",
+                    "resposta": "A unidade disponibiliza exames laboratoriais, anatomia patológica, endoscopia, raio-X, mamografia, ultrassonografia, tomografia, ressonância magnética, estudo urodinâmico, além de exames neurológicos, oftalmológicos, cardiológicos, pneumológicos, e terapias (fisioterapia/fonoaudiologia)."
+                }
+            ]
         }
     ]
 }
