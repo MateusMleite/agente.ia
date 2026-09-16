@@ -1,12 +1,84 @@
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
+import "dotenv/config";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-function getKB() {
+function lerBaseLocal() {
     const raw = readFileSync(join(__dirname, "knowledgeBase.json"), "utf-8");
     return JSON.parse(raw);
+}
+
+function normalizarIdSetor(nome) {
+    return String(nome || "informacoes_gerais")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .trim()
+        .replace(/[-\s/]+/g, "_");
+}
+
+function normalizarBaseRemota(dados) {
+    if (Array.isArray(dados?.setores)) return dados;
+
+    const cards = Array.isArray(dados?.cards)
+        ? dados.cards
+        : Array.isArray(dados?.entradas)
+            ? dados.entradas
+        : Array.isArray(dados)
+            ? dados
+            : [];
+    const publicados = cards.some((card) => card.status)
+        ? cards.filter((card) => card.status === "publicado")
+        : cards;
+    const setores = new Map();
+
+    for (const card of publicados) {
+        if (!card?.pergunta || !card?.resposta) continue;
+        const nomeSetor = card.setor || "Informações gerais";
+        const id = normalizarIdSetor(nomeSetor);
+        if (!setores.has(id)) {
+            setores.set(id, { id, nome: nomeSetor, perguntas: [], avisos: [] });
+        }
+        const setor = setores.get(id);
+        setor.perguntas.push({ pergunta: card.pergunta, resposta: card.resposta });
+        if (card.aviso) setor.avisos.push(card.aviso);
+    }
+
+    return { setores: [...setores.values()] };
+}
+
+async function carregarBase() {
+    const baseLocal = lerBaseLocal();
+    const url = process.env.KNOWLEDGE_BASE_URL?.trim();
+    if (!url) return baseLocal;
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+    try {
+        const resposta = await fetch(url, {
+            headers: { Accept: "application/json" },
+            signal: controller.signal,
+        });
+        if (!resposta.ok) throw new Error(`HTTP ${resposta.status}`);
+        const dados = await resposta.json();
+        const baseRemota = normalizarBaseRemota(dados);
+        if (!baseRemota.setores.length) throw new Error("JSON sem cards válidos");
+        console.log(`📚 Base remota carregada: ${baseRemota.setores.length} setores.`);
+        return baseRemota;
+    } catch (erro) {
+        console.warn(`⚠️ Não foi possível carregar a base remota (${erro.message}). Usando a base local.`);
+        return baseLocal;
+    } finally {
+        clearTimeout(timeout);
+    }
+}
+
+const baseDeConhecimento = await carregarBase();
+
+function getKB() {
+    return baseDeConhecimento;
 }
 
 /**

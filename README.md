@@ -31,9 +31,20 @@ cp .env.example .env
 Preencha o `.env` com:
 - `GROQ_API_KEY` — sua chave da API da Groq (console.groq.com/keys)
 - `GROQ_MODEL` — opcional, padrão é `llama-3.3-70b-versatile` (confira em console.groq.com/docs/models se o nome ainda está disponível)
+- `KNOWLEDGE_BASE_URL` — opcional, URL que retorna o JSON da biblioteca de conhecimento. Para a biblioteca CHZN: `https://chzn-biblioteca-de-con-p18acds.verdent.app/api/base-conhecimento.json`
 - `WHATSAPP_TOKEN` e `WHATSAPP_PHONE_NUMBER_ID` — do seu app configurado no Meta for Developers
 - `WHATSAPP_VERIFY_TOKEN` — uma frase secreta escolhida por você, usada só na verificação do webhook
 - `NUMERO_PSICOLOGIA`, `NUMERO_NUTRICAO`, `NUMERO_HOSPITAL_DIA`, `NUMERO_CENTRO_CIRURGICO`, etc. — números internos (com WhatsApp) de cada setor, no formato `5592999999999`
+
+Quando `KNOWLEDGE_BASE_URL` estiver configurada, o agente carrega essa fonte ao
+iniciar. Ele aceita JSON no formato atual (`setores`) ou uma lista de `cards`.
+Quando os cards tiverem `status`, somente os cards com status `publicado` serão
+usados. Se a URL falhar ou não tiver cards válidos, o agente usa a base local
+em `src/knowledgeBase.json`.
+
+A URL da página da biblioteca (`https://chzn-biblioteca-de-con-p18acds.verdent.app/`)
+é HTML e não deve ser usada diretamente nessa variável. Use a rota JSON:
+`https://chzn-biblioteca-de-con-p18acds.verdent.app/api/base-conhecimento.json`.
 
 ## 2. Testar o "cérebro" do agente (sem WhatsApp ainda)
 
