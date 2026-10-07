@@ -6,9 +6,11 @@ import { responderPaciente } from "./llamaAgent.js";
 import { enviarMensagemWhatsApp, marcarComoLida } from "./whatsapp.js";
 import { enviarMensagemFortics } from "./fortics.js";
 import { lerMetricas, registrarAcesso, registrarAvaliacao, calcularMediaAvaliacoes } from "./metricas.js";
+import { criarRateLimit } from "./rateLimit.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
+app.set("trust proxy", 1);
 
 // CORS — permite que o site da Hostgator chame esta API
 app.use((req, res, next) => {
@@ -19,9 +21,12 @@ app.use((req, res, next) => {
     next();
 });
 
-// Body parsers — devem vir ANTES de qualquer rota que use req.body
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: "100kb" }));
+app.use(express.urlencoded({ extended: true, limit: "100kb" }));
+
+app.use("/chat", criarRateLimit({ janelaMs: 60_000, maxRequisicoes: 30 }));
+app.use("/fortics-webhook", criarRateLimit({ janelaMs: 60_000, maxRequisicoes: 120 }));
+app.use("/webhook", criarRateLimit({ janelaMs: 60_000, maxRequisicoes: 120 }));
 
 // Serve o widget de chat estático
 app.use("/widget", express.static(path.join(__dirname, "../chat-widget")));

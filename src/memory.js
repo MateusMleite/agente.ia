@@ -7,21 +7,50 @@
 // mantendo a mesma interface (getHistorico / adicionarMensagem).
 
 const HISTORICO_MAXIMO = 50; // últimas 50 mensagens por paciente
+const PACIENTES_MAXIMO = 5000;
+const MEMORIA_TTL_MS = 30 * 60 * 1000;
 const historicoPorPaciente = new Map();
 
 export function getHistorico(telefone) {
-    return historicoPorPaciente.get(telefone) ?? [];
+    const chave = String(telefone || "paciente_desconhecido");
+    const registro = historicoPorPaciente.get(chave);
+    if (!registro) return [];
+    if (Date.now() - registro.atualizadoEm > MEMORIA_TTL_MS) {
+        historicoPorPaciente.delete(chave);
+        return [];
+    }
+    registro.atualizadoEm = Date.now();
+    return registro.mensagens;
 }
 
 export function adicionarMensagem(telefone, mensagem) {
-    const historico = getHistorico(telefone);
+    const chave = String(telefone || "paciente_desconhecido");
+    const historico = getHistorico(chave);
     historico.push(mensagem);
 
     // Descarta as mensagens mais antigas, mantendo só as últimas N
     const historicoLimitado = historico.slice(-HISTORICO_MAXIMO);
-    historicoPorPaciente.set(telefone, historicoLimitado);
+    if (!historicoPorPaciente.has(chave) && historicoPorPaciente.size >= PACIENTES_MAXIMO) {
+        removerHistoricoMaisAntigo();
+    }
+    historicoPorPaciente.set(chave, {
+        mensagens: historicoLimitado,
+        atualizadoEm: Date.now(),
+    });
 }
 
 export function limparHistorico(telefone) {
-    historicoPorPaciente.delete(telefone);
+    historicoPorPaciente.delete(String(telefone || "paciente_desconhecido"));
+}
+
+function removerHistoricoMaisAntigo() {
+    let chaveMaisAntiga = null;
+    let atualizadoMaisAntigo = Infinity;
+    for (const [chave, registro] of historicoPorPaciente) {
+        if (registro.atualizadoEm < atualizadoMaisAntigo) {
+            chaveMaisAntiga = chave;
+            atualizadoMaisAntigo = registro.atualizadoEm;
+        }
+    }
+    if (chaveMaisAntiga) historicoPorPaciente.delete(chaveMaisAntiga);
 }
